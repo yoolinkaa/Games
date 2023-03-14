@@ -5,6 +5,7 @@ class Room:
     class Room
     """
     def __init__(self, name, linked_rooms = {}, items = None, enemy = None, friend = None) -> None:
+
         self.name = name
         self.items = items
         self.enemy = enemy
@@ -69,7 +70,7 @@ class Room:
             details += [self.friend.describe()]
         if self.get_item() is not None:
             details += [f"{self.items.name} тут! - {self.items.describe()}"]
-        return "\n".join(details)
+
 
     def set_item(self, item) -> None:
         """
@@ -124,6 +125,7 @@ class Enemy:
         """
         return enemy conversation
         """
+
         return f"[{self.name} каже]: {self.conversation}"
 
     def get_defeated(self) -> int:
