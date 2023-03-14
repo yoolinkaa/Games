@@ -2,24 +2,28 @@
 
 Python game
 
+Ти потрапив(ла) до міста Комарно
+
+Твоє завдання - прожити ці вихідні
+
 
 ## FAQ
 
-#### What actions can be performed?
+#### Що може виконувати мій персонаж?
 
-You can:
-- talk (to call enemy conversation)
-- fight (to fight with enemy)
-- take (to take an item)
+Дії:
+- побалакати (щоб побалакати з ворогом / другом)
+- взаємодіяти (щоб взяємодіяти з ворогом)
+- взяти (підібрати предмет)
 
-#### How to win?
+#### Як перемогти?
 
-You need to defeat two enemies
+Тобі потрібно уникнути конфлікту з Михасика і цьоцю Галю
 
-#### How to defeat Dave?
+#### Як уникнути Михасика?
 
-You need to use cheese
+Використай 50 грам. Їх можна знайти побалакавши з Сомі
 
-#### How to defeat Tabitha?
+#### Як викрутитись?
 
-You need to use book
+Використай пакет

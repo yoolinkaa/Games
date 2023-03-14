@@ -4,11 +4,13 @@ class Room:
     """
     class Room
     """
-    def __init__(self, name, linked_rooms = {}, items = None, enemy = None) -> None:
+    def __init__(self, name, linked_rooms = {}, items = None, enemy = None, friend = None) -> None:
+
         self.name = name
         self.items = items
         self.enemy = enemy
         self.linked_rooms = linked_rooms
+        self.friend = friend
 
     def set_description(self, des) -> None:
         """
@@ -41,6 +43,13 @@ class Room:
         if self.enemy:
             return self.enemy
         return None
+    def get_friend(self):
+        """
+        return friend
+        """
+        if self.friend:
+            return self.friend
+        return None
 
     def get_details(self) -> str:
         """
@@ -52,13 +61,16 @@ class Room:
             if self.linked_rooms[i][1] == self.name:
                 places += [i]
         for i in places:
-            details += [f"The {self.linked_rooms[i][0]} is {i}"]
+            details += [f"{self.linked_rooms[i][0]} -> {i}"]
         if self.get_character() is not None:
-            details += [f"{self.enemy.name} is here!"]
+            details += [f"{self.enemy.name} тут!"]
             details += [self.enemy.describe()]
+        if self.friend is not None:
+            details += [f"{self.friend.name} тут!"]
+            details += [self.friend.describe()]
         if self.get_item() is not None:
-            details += [f"The {self.items.name} is here! - {self.items.describe()}"]
-        return "\n".join(details)
+            details += [f"{self.items.name} тут! - {self.items.describe()}"]
+
 
     def set_item(self, item) -> None:
         """
@@ -70,7 +82,10 @@ class Room:
         """
         add characters to room
         """
-        self.enemy = character
+        if isinstance(character, Friend):
+            self.friend = character
+        else:
+            self.enemy = character
 
     def get_item(self) -> None:
         """
@@ -110,7 +125,8 @@ class Enemy:
         """
         return enemy conversation
         """
-        return f"[{self.name} says]: {self.conversation}"
+
+        return f"[{self.name} каже]: {self.conversation}"
 
     def get_defeated(self) -> int:
         """
@@ -152,6 +168,29 @@ class Item:
         """
         return self.name
 
-# if __name__ == "__main__":
-#     import doctest
-#     print(doctest.testmod())
+class Friend:
+    """
+    class Friend
+    """
+    def __init__(self, name, des) -> None:
+        self.name = name
+        self.friend_description = des
+
+    def set_conversation(self, sent) -> None:
+        """
+        set friend conversation
+        """
+        self.conversation = sent
+
+    def describe(self) -> str:
+        """
+        return enemy describtion
+        """
+        return self.friend_description
+
+    def talk(self):
+        """
+        return enemy conversation
+        """
+        return f"[{self.name} каже]: {self.conversation}\n\
+у Сомі з собою 50 грам"
