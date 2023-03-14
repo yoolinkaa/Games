@@ -97,7 +97,7 @@ while dead == False:
     elif command == "взаємодіяти":
         if inhabitant is not None:
             # Fight with the inhabitant, if there is one
-            print("What will you fight with?")
+            print("Що ти можеш використати аби уникнути конфлікту?")
             fight_with = input()
 
             # Do I have this item?
@@ -112,8 +112,9 @@ while dead == False:
                         dead = True
                 else:
                     # What happens if you lose?
-                    print("Oh dear, you lost the fight.")
-                    print("That's the end of the game")
+                    print("От халепа.")
+                    print("Ніч вийшла невдалою:(")
+                    print("Спробуй ще раз!")
                     dead = True
             else:
                 print("У тебе немає " + fight_with)
